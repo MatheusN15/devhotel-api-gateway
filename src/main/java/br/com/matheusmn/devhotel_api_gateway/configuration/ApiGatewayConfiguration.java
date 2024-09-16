@@ -10,22 +10,22 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.function.Function;
 
-@Configuration
+//@Configuration
 public class ApiGatewayConfiguration {
 
-    	@Bean
-        RouteLocator gatewayRouter(RouteLocatorBuilder builder) {
-            Function<PredicateSpec, Buildable<Route>> function = p -> p
-                    .path("/get")
-                    .filters(f -> f
-                            .addRequestHeader("Hello", "World")
-                            .addRequestParameter("Hello", "World"))
-                    .uri("http://httpbin.org:80");
-
-            return builder.routes()
-				.route(function)
-                    .route(p -> p.path("/users/**").uri("lb://user-service"))
-                    .route(p -> p.path("/room-service/**").uri("lb://room-service"))
-				.build();
-	}
+//    	@Bean
+//        RouteLocator gatewayRouter(RouteLocatorBuilder builder) {
+//            Function<PredicateSpec, Buildable<Route>> function = p -> p
+//                    .path("/get")
+//                    .filters(f -> f
+//                            .addRequestHeader("Hello", "World")
+//                            .addRequestParameter("Hello", "World"))
+//                    .uri("http://httpbin.org:80");
+//
+//            return builder.routes()
+//				.route(function)
+//                    .route(p -> p.path("/users/**").uri("lb://user-service"))
+//                    .route(p -> p.path("/room-service/**").uri("lb://room-service"))
+//				.build();
+//	}
 }
